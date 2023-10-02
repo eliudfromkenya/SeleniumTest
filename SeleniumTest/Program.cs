@@ -1,15 +1,20 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 
 Console.WriteLine("Testing Chrome");
 using IWebDriver driver = new ChromeDriver();
 driver.Navigate().GoToUrl("https://mis.kenyafarmersassociation.co.ke/bc130");
 
 Thread.Sleep(10000);
+var ns = driver.PageSource;
 
+driver.Navigate().GoToUrl("https://mis.kenyafarmersassociation.co.ke/bc130");
+ns = driver.PageSource;
 var elements = driver.FindElements(By.CssSelector("span"));
-
 var sellSpanTexts = elements.Select(c => c.GetAttribute("class")).ToArray();//.FirstOrDefault(v => v.Text == "Sell");
 
 
